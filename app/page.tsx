@@ -71,11 +71,11 @@ export default function Home() {
               </div>
               <div className="stat-cell">
                 <div className="stat-label">Scale</div>
-                <div className="stat-val" style={{ fontSize: "1.1rem", paddingTop: "4px" }}>6.2B units/yr</div>
+                <div className="stat-val" style={{ fontSize: "1.1rem", paddingTop: "4px" }}>6.2B cigarette/year</div>
               </div>
               <div className="stat-cell">
                 <div className="stat-label">Domain</div>
-                <div className="stat-val" style={{ fontSize: "1.1rem", paddingTop: "4px" }}>FMCG Mfg.</div>
+                <div className="stat-val" style={{ fontSize: "1.1rem", paddingTop: "4px" }}>FMCG Domain</div>
               </div>
             </div>
             <div className="tag-row">
