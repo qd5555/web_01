@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Nguyễn Thành — Data Analyst",
+  title: "Quang Dũng Phạm | Data Analyst",
   description: "Portfolio của Data Analyst với 1 năm kinh nghiệm, chuyên Power BI, SQL và phân tích dữ liệu kinh doanh.",
 };
 
