@@ -1,115 +1,209 @@
-import { Mail, Linkedin, FileText, Github, MapPin, Star, Maximize2 } from "lucide-react";
+"use client";
+
+import { useEffect, useRef } from "react";
 
 export default function Home() {
+  const fadeRefs = useRef<HTMLElement[]>([]);
+
+  useEffect(() => {
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) e.target.classList.add("visible");
+        });
+      },
+      { threshold: 0.15 }
+    );
+    fadeRefs.current.forEach((el) => el && obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
+
+  const addFade = (el: HTMLElement | null) => {
+    if (el && !fadeRefs.current.includes(el)) fadeRefs.current.push(el);
+  };
+
   return (
-    <main className="max-w-3xl mx-auto p-6 space-y-6">
-      <p className="text-center text-sm text-gray-500 mb-4">Cuộn từ trên xuống dưới →</p>
+    <>
+      {/* ── NAV ── */}
+      <nav>
+        <a href="#hero" className="nav-logo">NT.</a>
+        <ul className="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#project">Project</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
 
-      {/* HERO SECTION */}
-      <section className="bg-[#f2f0ea] border border-gray-200 rounded-2xl p-10 text-center space-y-4 shadow-sm">
-        <p className="text-xs font-medium text-gray-500 uppercase tracking-widest">Hero — Màn hình đầu tiên</p>
-        <div className="w-24 h-24 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center text-3xl font-bold mx-auto border-4 border-white shadow-sm">
-          NT
+      {/* ── HERO ── */}
+      <section id="hero">
+        <div className="hero-text fade" ref={addFade}>
+          <div className="hero-eyebrow">Data Analyst · Ho Chi Minh City</div>
+          <h1>
+            Biến dữ liệu<br />
+            thành <em>insight</em><br />
+            có giá trị
+          </h1>
+          <p className="hero-sub">
+            1 năm kinh nghiệm phân tích dữ liệu kinh doanh, xây dựng dashboard
+            và báo cáo giúp team ra quyết định nhanh hơn.
+          </p>
+          <a href="#project" className="hero-cta">
+            Xem Project
+            <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5">
+              <path d="M1 7h12M8 2l5 5-5 5" />
+            </svg>
+          </a>
         </div>
-        <div className="space-y-1">
-          <h1 className="text-3xl font-bold text-gray-900">Nguyễn Thành</h1>
-          <p className="text-gray-600">Data Analyst • 1 năm kinh nghiệm</p>
-          <p className="text-gray-500 italic">Biến dữ liệu thành insight bằng Power BI & SQL</p>
-        </div>
-        <div className="flex justify-center gap-3 pt-2">
-          <button className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-full hover:bg-gray-50 transition shadow-sm text-sm">
-            <Linkedin size={16} className="text-blue-600" /> LinkedIn
-          </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-full hover:bg-gray-50 transition shadow-sm text-sm">
-            <Mail size={16} className="text-red-500" /> Email
-          </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-full hover:bg-gray-50 transition shadow-sm text-sm font-bold">
-             署 CV
-          </button>
-        </div>
-      </section>
 
-      {/* ABOUT SECTION */}
-      <section className="bg-white border border-gray-100 rounded-2xl p-8 space-y-6 shadow-sm">
-        <p className="text-xs font-medium text-gray-400 uppercase tracking-widest">About — Ngắn gọn</p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="bg-gray-50 p-4 rounded-xl border border-gray-100">
-            <p className="text-sm font-semibold text-gray-500 mb-3">Tools</p>
-            <div className="flex flex-wrap gap-2">
-              {['Power BI', 'SQL', 'Excel'].map(tool => (
-                <span key={tool} className="px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-sm font-medium">{tool}</span>
+        <div className="hero-visual fade" ref={addFade}>
+          <div className="deco-line" />
+          <div className="hero-card">
+            <div className="stat-grid">
+              <div className="stat-cell">
+                <div className="stat-label">Kinh nghiệm</div>
+                <div className="stat-val">1 năm</div>
+              </div>
+              <div className="stat-cell">
+                <div className="stat-label">Dashboard</div>
+                <div className="stat-val">10+</div>
+              </div>
+              <div className="stat-cell">
+                <div className="stat-label">Báo cáo</div>
+                <div className="stat-val">20+</div>
+              </div>
+              <div className="stat-cell">
+                <div className="stat-label">Domain</div>
+                <div className="stat-val" style={{ fontSize: "1.1rem", paddingTop: "4px" }}>
+                  Sales & Finance
+                </div>
+              </div>
+            </div>
+            <div className="tag-row">
+              {["Power BI", "SQL", "Excel"].map((t) => (
+                <span key={t} className="tag active">{t}</span>
+              ))}
+              {["Python", "DAX", "ETL"].map((t) => (
+                <span key={t} className="tag">{t}</span>
               ))}
             </div>
           </div>
-          <div className="bg-gray-50 p-4 rounded-xl border border-gray-100">
-            <p className="text-sm font-semibold text-gray-500 mb-3">Domain</p>
-            <div className="flex flex-wrap gap-2">
-              {['Sales', 'Finance'].map(domain => (
-                <span key={domain} className="px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-sm font-medium">{domain}</span>
-              ))}
-            </div>
-          </div>
         </div>
-        <p className="text-gray-600 leading-relaxed italic">
-          3-4 dòng giới thiệu bản thân. Học trường nào, làm ở đâu, thích phân tích mảng gì...
-        </p>
       </section>
 
-      {/* PROJECT SECTION */}
-      <section className="bg-white border border-gray-100 rounded-2xl p-8 space-y-6 shadow-sm">
-        <div className="flex justify-between items-center">
-          <p className="text-xs font-medium text-gray-400 uppercase tracking-widest">Project — Phần chính</p>
-          <span className="flex items-center gap-1 px-3 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full">
-            <Star size={12} fill="currentColor" /> Trọng tâm nhất
-          </span>
+      {/* ── ABOUT ── */}
+      <section id="about">
+        <div className="fade" ref={addFade}>
+          <div className="section-number">01</div>
         </div>
-        
-        <div className="space-y-4">
-          <h2 className="text-2xl font-bold">Sales Performance Dashboard</h2>
-          <p className="text-gray-600">2-3 dòng: dùng data gì, phân tích gì, insight chính tìm ra là gì</p>
-          <div className="flex gap-2">
-            {['Power BI', 'SQL Server', 'DAX'].map(tag => (
-              <span key={tag} className="px-3 py-1 bg-gray-100 text-gray-600 rounded-md text-xs font-medium border border-gray-200">{tag}</span>
+        <div className="fade" ref={addFade}>
+          <h2 className="section-title">Về mình</h2>
+          <p className="about-body">
+            Tốt nghiệp ngành Hệ thống Thông tin tại Đại học [Tên trường]. Trong
+            1 năm qua mình đã làm việc tại [Tên công ty], hỗ trợ team Sales &
+            Finance xây dựng hệ thống báo cáo tự động bằng Power BI, giảm thời
+            gian tổng hợp báo cáo từ 2 ngày xuống còn 2 giờ.
+          </p>
+          <div className="skills-grid">
+            {[
+              { title: "Visualization", items: ["Power BI", "DAX & Power Query", "Excel Advanced"] },
+              { title: "Data", items: ["SQL (SQL Server)", "Python (Pandas)", "ETL Pipeline"] },
+              { title: "Domain", items: ["Sales Analysis", "Financial Reporting"] },
+              { title: "Soft skills", items: ["Data Storytelling", "Stakeholder Mgmt"] },
+            ].map((box) => (
+              <div key={box.title} className="skill-box">
+                <div className="skill-box-title">{box.title}</div>
+                <ul className="skill-list">
+                  {box.items.map((item) => <li key={item}>{item}</li>)}
+                </ul>
+              </div>
             ))}
           </div>
-          
-          {/* Mock Iframe Container */}
-          <div className="relative w-full aspect-video bg-gray-50 border-2 border-dashed border-gray-200 rounded-xl flex flex-col items-center justify-center text-gray-400 overflow-hidden">
-            <div className="absolute top-4 left-4 flex items-center gap-2 text-xs font-medium">
-              <FileText size={14}/> Power BI Report
+        </div>
+      </section>
+
+      {/* ── PROJECT ── */}
+      <section id="project">
+        <div className="project-header fade" ref={addFade}>
+          <div>
+            <div className="section-number" style={{ fontSize: "3.5rem", color: "rgba(200,75,47,0.15)" }}>02</div>
+            <h2 className="section-title">Featured Project</h2>
+          </div>
+          <div className="project-meta">
+            Power BI · SQL Server · DAX<br />
+            Q1 2024 – Q4 2024
+          </div>
+        </div>
+
+        <div className="project-card fade" ref={addFade}>
+          <div className="project-card-header">
+            <div>
+              <div className="project-title">Sales Performance Dashboard</div>
+              <p className="project-desc">
+                Dashboard phân tích doanh thu theo kênh bán hàng, sản phẩm và
+                khu vực. Giúp Ban Giám đốc theo dõi KPI theo thời gian thực và
+                ra quyết định phân bổ ngân sách hàng quý.
+              </p>
             </div>
-            <div className="absolute top-4 right-4 flex items-center gap-1 text-xs font-medium cursor-pointer hover:text-blue-500">
-              <Maximize2 size={14}/> Full screen
+            <div className="project-tags">
+              {["Power BI", "SQL"].map((t) => (
+                <span key={t} className="tag active">{t}</span>
+              ))}
+              <span className="tag">DAX</span>
             </div>
-            <div className="text-center space-y-2 px-4">
-              <div className="text-4xl mb-2">📊</div>
-              <p className="text-sm font-medium text-gray-500 italic">iframe embed Power BI ở đây</p>
-              <p className="text-xs">responsive • interactive</p>
+          </div>
+
+          {/* ── BI IMAGE — thay bằng <iframe> khi có report thật ── */}
+          <div className="bi-wrapper">
+            <img
+              src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80"
+              alt="Sales Performance Dashboard preview"
+            />
+            <div className="bi-overlay" />
+            <div className="bi-label">Live Report Preview</div>
+            <a className="bi-fullscreen" href="#" target="_blank" rel="noreferrer">
+              ↗ Full screen
+            </a>
+            <div className="bi-caption">
+              <div className="bi-insight">
+                <strong>Key Insight</strong>
+                Top 3 sản phẩm chiếm 62% tổng doanh thu. Kênh online tăng
+                trưởng 34% so với cùng kỳ năm trước.
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CONTACT SECTION */}
-      <section className="bg-[#f2f0ea] border border-gray-200 rounded-2xl p-10 text-center space-y-6 shadow-sm">
-        <div className="space-y-4">
-            <p className="text-xs font-medium text-gray-400 uppercase tracking-widest">Contact</p>
-            <h3 className="text-xl font-semibold flex items-center justify-center gap-2">
-              Sẵn sàng cho cơ hội mới • Ho Chi Minh City
-            </h3>
+      {/* ── CONTACT ── */}
+      <section id="contact">
+        <div className="fade" ref={addFade}>
+          <h2 className="contact-tagline">
+            Sẵn sàng cho<br /><em>cơ hội mới</em>
+          </h2>
         </div>
-        <div className="flex justify-center gap-3 pt-2">
-          <button className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-full hover:bg-gray-50 transition shadow-sm text-sm">
-            <Linkedin size={16} className="text-blue-600" /> LinkedIn
-          </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-full hover:bg-gray-50 transition shadow-sm text-sm">
-            <Mail size={16} className="text-red-500" /> Gmail
-          </button>
-          <button className="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-full hover:bg-gray-50 transition shadow-sm text-sm">
-            <Github size={16} className="text-black" /> GitHub
-          </button>
+        <div className="fade" ref={addFade}>
+          <div className="contact-links">
+            <a href="mailto:your@email.com" className="contact-link">
+              📧 your@email.com <span>Email</span>
+            </a>
+            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noreferrer" className="contact-link">
+              💼 linkedin.com/in/yourprofile <span>LinkedIn</span>
+            </a>
+            <a href="https://github.com/yourprofile" target="_blank" rel="noreferrer" className="contact-link">
+              🐙 github.com/yourprofile <span>GitHub</span>
+            </a>
+            <a href="#" className="contact-link contact-link-cta">
+              📄 Tải CV của mình <span>PDF · 2025</span>
+            </a>
+          </div>
         </div>
       </section>
-    </main>
+
+      {/* ── FOOTER ── */}
+      <footer>
+        <span>© 2025 Nguyễn Thành · Data Analyst</span>
+        <span>Built with Next.js · Ho Chi Minh City</span>
+      </footer>
+    </>
   );
 }
