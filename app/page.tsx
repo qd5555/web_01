@@ -26,9 +26,10 @@ export default function Home() {
     <>
       {/* ── NAV ── */}
       <nav>
-        <a href="#hero" className="nav-logo">NT.</a>
+        <a href="#hero" className="nav-logo">PQD.</a>
         <ul className="nav-links">
           <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
           <li><a href="#project">Project</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
@@ -37,18 +38,19 @@ export default function Home() {
       {/* ── HERO ── */}
       <section id="hero">
         <div className="hero-text fade" ref={addFade}>
-          <div className="hero-eyebrow">Data Analyst · Ho Chi Minh City</div>
+          <div className="hero-eyebrow">BI Executive · Ho Chi Minh City</div>
           <h1>
-            Biến dữ liệu<br />
-            thành <em>insight</em><br />
-            có giá trị
+            Turning raw data<br />
+            into <em>decisions</em><br />
+            that matter
           </h1>
           <p className="hero-sub">
-            2 năm kinh nghiệm phân tích dữ liệu kinh doanh, xây dựng dashboard
-            và báo cáo giúp team ra quyết định nhanh hơn.
+            Data analyst with experience in FMCG manufacturing — specializing in
+            end-to-end ETL pipelines, automated reporting, and Power BI dashboards
+            that reduce cost and manual errors.
           </p>
           <a href="#project" className="hero-cta">
-            Xem Project
+            View Project
             <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5">
               <path d="M1 7h12M8 2l5 5-5 5" />
             </svg>
@@ -60,29 +62,27 @@ export default function Home() {
           <div className="hero-card">
             <div className="stat-grid">
               <div className="stat-cell">
-                <div className="stat-label">Kinh nghiệm</div>
-                <div className="stat-val">1 năm</div>
+                <div className="stat-label">Experience</div>
+                <div className="stat-val">1+ yr</div>
               </div>
               <div className="stat-cell">
-                <div className="stat-label">Dashboard</div>
-                <div className="stat-val">10+</div>
+                <div className="stat-label">Reporting time</div>
+                <div className="stat-val">−70%</div>
               </div>
               <div className="stat-cell">
-                <div className="stat-label">Báo cáo</div>
-                <div className="stat-val">20+</div>
+                <div className="stat-label">Scale</div>
+                <div className="stat-val" style={{ fontSize: "1.1rem", paddingTop: "4px" }}>6.2B units/yr</div>
               </div>
               <div className="stat-cell">
                 <div className="stat-label">Domain</div>
-                <div className="stat-val" style={{ fontSize: "1.1rem", paddingTop: "4px" }}>
-                  Sales & Finance
-                </div>
+                <div className="stat-val" style={{ fontSize: "1.1rem", paddingTop: "4px" }}>FMCG Mfg.</div>
               </div>
             </div>
             <div className="tag-row">
-              {["Power BI", "SQL", "Excel"].map((t) => (
+              {["Power BI", "SQL", "DAX"].map((t) => (
                 <span key={t} className="tag active">{t}</span>
               ))}
-              {["Python", "DAX", "ETL"].map((t) => (
+              {["VBA", "Power Automate", "SAP"].map((t) => (
                 <span key={t} className="tag">{t}</span>
               ))}
             </div>
@@ -96,24 +96,39 @@ export default function Home() {
           <div className="section-number">01</div>
         </div>
         <div className="fade" ref={addFade}>
-          <h2 className="section-title">Về mình</h2>
+          <h2 className="section-title">About</h2>
           <p className="about-body">
-            Tốt nghiệp ngành Công nghệ thực phẩm tại International University - VNU HCMC. Trong
-            2 năm qua mình đã làm việc tại [Tên công ty], hỗ trợ team Operation
-            xây dựng hệ thống báo cáo tự động bằng Power BI, giảm thời
-            gian tổng hợp báo cáo từ 2 ngày xuống còn 2 giờ.
+            Bachelor of Engineering in Food Technology from International University — VNU HCMC.
+            Currently working as IWS Coordinator at British American Tobacco Vietnam, building
+            automated data pipelines and Power BI dashboards as the single source of truth for
+            production KPIs across all manufacturing lines. Previously at Lucky Steel Buildings
+            as QA Officer, developing VBA-powered ETL flows that cut documentation time by 40%.
           </p>
           <div className="skills-grid">
             {[
-              { title: "Visualization", items: ["Power BI", "DAX & Power Query", "Excel Advanced"] },
-              { title: "Data", items: ["SQL (SQL Server)", "Python (Pandas)", "ETL Pipeline"] },
-              { title: "Domain", items: ["Sales Analysis", "Financial Reporting"] },
-              { title: "Soft skills", items: ["Data Storytelling", "Stakeholder Mgmt"] },
+              {
+                title: "Visualization",
+                items: ["Power BI (DAX)", "Advanced Excel", "Power Query / VBA"],
+              },
+              {
+                title: "Data & Databases",
+                items: ["SQL Server", "SAP S/4HANA", "ETL Pipeline Design"],
+              },
+              {
+                title: "Automation",
+                items: ["Power Automate", "Office Scripts", "VBA Macros"],
+              },
+              {
+                title: "Soft Skills",
+                items: ["Lean / 5 Whys / 6W2H", "Data Storytelling", "Stakeholder Mgmt"],
+              },
             ].map((box) => (
               <div key={box.title} className="skill-box">
                 <div className="skill-box-title">{box.title}</div>
                 <ul className="skill-list">
-                  {box.items.map((item) => <li key={item}>{item}</li>)}
+                  {box.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
                 </ul>
               </div>
             ))}
@@ -121,53 +136,117 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── PROJECT ── */}
+      {/* ── EXPERIENCE ── */}
+      <section id="experience">
+        <div className="fade" ref={addFade}>
+          <div className="section-number" style={{ fontSize: "3.5rem", color: "rgba(200,75,47,0.15)" }}>02</div>
+          <h2 className="section-title">Experience</h2>
+        </div>
+        <div className="exp-list fade" ref={addFade}>
+
+          {/* BAT */}
+          <div className="exp-card">
+            <div className="exp-meta">
+              <div className="exp-company">British American Tobacco</div>
+              <div className="exp-period">Jul 2025 – Present</div>
+            </div>
+            <div>
+              <div className="exp-role">IWS Coordinator</div>
+              <p className="exp-desc">
+                Architected SQL Server / Excel ETL pipelines replacing manual workflows.
+                Designed Power BI dashboards as the single source of truth for Daily Direction Setting
+                across all production lines. Engineered automated SPC charts with hourly refresh via
+                Power Automate. Built a manufacturing loss intelligence framework covering ~6.2B
+                cigarettes annually — enabling systematic Pareto analysis for loss elimination.
+              </p>
+              <div className="exp-achievement">
+                ↗ Reduced raw data standardization time by 70%, eliminating manual consolidation
+                across quality operations.
+              </div>
+              <div className="exp-tools">
+                {["SAP ERP", "Power BI", "SQL Server", "Power Automate", "Power Apps", "Advanced Excel"].map((t) => (
+                  <span key={t} className="tag">{t}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+          {/* Lucky Steel */}
+          <div className="exp-card">
+            <div className="exp-meta">
+              <div className="exp-company">Lucky Steel Buildings</div>
+              <div className="exp-period">Jan 2025 – May 2025</div>
+            </div>
+            <div>
+              <div className="exp-role">QA Officer</div>
+              <p className="exp-desc">
+                Managed end-to-end project documentation across all phases. Coordinated with
+                suppliers, PMs, QC/QS teams, and testing labs to resolve compliance gaps.
+                Developed VBA ETL flows to process raw image and PDF documents automatically.
+              </p>
+              <div className="exp-achievement">
+                ↗ Reduced QA documentation time by 40%. Generated ~50-page traceability
+                reports in under 2 minutes via macros.
+              </div>
+              <div className="exp-tools">
+                {["VBA", "Advanced Excel", "ETL"].map((t) => (
+                  <span key={t} className="tag">{t}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ── PROJECT / BI ── */}
       <section id="project">
         <div className="project-header fade" ref={addFade}>
           <div>
-            <div className="section-number" style={{ fontSize: "3.5rem", color: "rgba(200,75,47,0.15)" }}>02</div>
+            <div className="section-number" style={{ fontSize: "3.5rem", color: "rgba(200,75,47,0.15)" }}>03</div>
             <h2 className="section-title">Featured Project</h2>
           </div>
           <div className="project-meta">
             Power BI · SQL Server · DAX<br />
-            Q1 2024 – Q4 2024
+            BAT Vietnam · 2025
           </div>
         </div>
 
         <div className="project-card fade" ref={addFade}>
           <div className="project-card-header">
             <div>
-              <div className="project-title">Sale Performance Dashboard</div>
+              <div className="project-title">Quality KPI Dashboard — BAT Vietnam</div>
               <p className="project-desc">
-                Dashboard phân tích doanh thu theo kênh bán hàng, sản phẩm và
-                khu vực. Giúp Ban Giám đốc theo dõi KPI theo thời gian thực và
-                ra quyết định phân bổ ngân sách hàng quý.
+                Single source of truth for Daily Direction Setting across all production lines.
+                Consolidates quality KPIs from SQL Server with daily/weekly/monthly granularity,
+                enabling line managers to identify anomalies and drive accountability discussions
+                in real time — replacing a fully manual reporting process.
               </p>
             </div>
             <div className="project-tags">
-              {["Power BI", "SQL"].map((t) => (
+              {["Power BI", "SQL Server", "DAX"].map((t) => (
                 <span key={t} className="tag active">{t}</span>
               ))}
-              <span className="tag">DAX</span>
+              <span className="tag">Power Automate</span>
             </div>
           </div>
 
-          {/* ── BI IMAGE — thay bằng <iframe> khi có report thật ── */}
+          {/* BI IMAGE — thay bằng <iframe> khi có Power BI embed link thật */}
           <div className="bi-wrapper">
             <img
               src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80"
-              alt="Sales Performance Dashboard preview"
+              alt="Quality KPI Dashboard preview"
             />
             <div className="bi-overlay" />
-            <div className="bi-label">Live Report Preview</div>
+            <div className="bi-label">Report Preview</div>
             <a className="bi-fullscreen" href="#" target="_blank" rel="noreferrer">
               ↗ Full screen
             </a>
             <div className="bi-caption">
               <div className="bi-insight">
-                <strong>Key Insight</strong>
-                Top 3 sản phẩm chiếm 62% tổng doanh thu. Kênh online tăng
-                trưởng 34% so với cùng kỳ năm trước.
+                <strong>Key Impact</strong>
+                Reduced raw data standardization time by 70%. SPC charts refresh hourly via
+                Power Automate — factory&apos;s first real-time statistical process control system.
               </div>
             </div>
           </div>
@@ -178,22 +257,31 @@ export default function Home() {
       <section id="contact">
         <div className="fade" ref={addFade}>
           <h2 className="contact-tagline">
-            Sẵn sàng cho<br /><em>cơ hội mới</em>
+            Open to<br /><em>new opportunities</em>
           </h2>
         </div>
         <div className="fade" ref={addFade}>
           <div className="contact-links">
-            <a href="mailto:your@email.com" className="contact-link">
-              📧 your@email.com <span>Email</span>
+            <a href="mailto:quangdung1803@gmail.com" className="contact-link">
+              📧 quangdung1803@gmail.com
+              <span>Email</span>
             </a>
-            <a href="https://linkedin.com/in/yourprofile" target="_blank" rel="noreferrer" className="contact-link">
-              💼 linkedin.com/in/yourprofile <span>LinkedIn</span>
+            <a href="tel:+840929743466" className="contact-link">
+              📞 0929.743.466
+              <span>Phone</span>
             </a>
-            <a href="https://github.com/yourprofile" target="_blank" rel="noreferrer" className="contact-link">
-              🐙 github.com/yourprofile <span>GitHub</span>
+            <a
+              href="https://www.linkedin.com/in/phamquangdung"
+              target="_blank"
+              rel="noreferrer"
+              className="contact-link"
+            >
+              💼 LinkedIn — Pham Quang Dung
+              <span>LinkedIn</span>
             </a>
             <a href="#" className="contact-link contact-link-cta">
-              📄 Tải CV của mình <span>PDF · 2025</span>
+              📄 Download CV
+              <span>PDF · 2025</span>
             </a>
           </div>
         </div>
@@ -201,8 +289,8 @@ export default function Home() {
 
       {/* ── FOOTER ── */}
       <footer>
-        <span>© 2025 Phạm Quang Dũng · Data Analyst</span>
-        <span>Built with Next.js · Ho Chi Minh City</span>
+        <span>© 2025 Pham Quang Dung · Business Intelligence Executive</span>
+        <span>Thu Dau Mot, HCMC · Built with Next.js</span>
       </footer>
     </>
   );
