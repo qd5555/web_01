@@ -75,7 +75,7 @@ export default function Home() {
               </div>
               <div className="stat-cell">
                 <div className="stat-label">Domain</div>
-                <div className="stat-val" style={{ fontSize: "1.1rem", paddingTop: "4px" }}>FMCG Domain</div>
+                <div className="stat-val" style={{ fontSize: "1.1rem", paddingTop: "4px" }}>FMCG</div>
               </div>
             </div>
             <div className="tag-row">
