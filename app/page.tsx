@@ -26,7 +26,7 @@ export default function Home() {
     <>
       {/* ── NAV ── */}
       <nav>
-        <a href="#hero" className="nav-logo">PQD.</a>
+        <a href="#hero" className="nav-logo">Quang Dung Pham</a>
         <ul className="nav-links">
           <li><a href="#about">About</a></li>
           <li><a href="#experience">Experience</a></li>
