@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Quang Dũng Phạm | Data Analyst",
-  description: "Portfolio của Data Analyst với 1 năm kinh nghiệm, chuyên Power BI, SQL và phân tích dữ liệu kinh doanh.",
+  description: "Portfolio của Data Analyst với 2 năm kinh nghiệm, chuyên Power BI, SQL và phân tích dữ liệu kinh doanh.",
 };
 
 export default function RootLayout({
