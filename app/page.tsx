@@ -44,7 +44,7 @@ export default function Home() {
             có giá trị
           </h1>
           <p className="hero-sub">
-            1 năm kinh nghiệm phân tích dữ liệu kinh doanh, xây dựng dashboard
+            2 năm kinh nghiệm phân tích dữ liệu kinh doanh, xây dựng dashboard
             và báo cáo giúp team ra quyết định nhanh hơn.
           </p>
           <a href="#project" className="hero-cta">
@@ -98,9 +98,9 @@ export default function Home() {
         <div className="fade" ref={addFade}>
           <h2 className="section-title">Về mình</h2>
           <p className="about-body">
-            Tốt nghiệp ngành Hệ thống Thông tin tại Đại học [Tên trường]. Trong
-            1 năm qua mình đã làm việc tại [Tên công ty], hỗ trợ team Sales &
-            Finance xây dựng hệ thống báo cáo tự động bằng Power BI, giảm thời
+            Tốt nghiệp ngành Công nghệ thực phẩm tại International University - VNU HCMC. Trong
+            2 năm qua mình đã làm việc tại [Tên công ty], hỗ trợ team Operation
+            xây dựng hệ thống báo cáo tự động bằng Power BI, giảm thời
             gian tổng hợp báo cáo từ 2 ngày xuống còn 2 giờ.
           </p>
           <div className="skills-grid">
@@ -137,7 +137,7 @@ export default function Home() {
         <div className="project-card fade" ref={addFade}>
           <div className="project-card-header">
             <div>
-              <div className="project-title">Sales Performance Dashboard</div>
+              <div className="project-title">Sale Performance Dashboard</div>
               <p className="project-desc">
                 Dashboard phân tích doanh thu theo kênh bán hàng, sản phẩm và
                 khu vực. Giúp Ban Giám đốc theo dõi KPI theo thời gian thực và
@@ -201,7 +201,7 @@ export default function Home() {
 
       {/* ── FOOTER ── */}
       <footer>
-        <span>© 2025 Nguyễn Thành · Data Analyst</span>
+        <span>© 2025 Phạm Quang Dũng · Data Analyst</span>
         <span>Built with Next.js · Ho Chi Minh City</span>
       </footer>
     </>
